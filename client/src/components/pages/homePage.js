@@ -39,7 +39,7 @@ class Homepage extends Component {
 	
 	
     <div class="w3-quarter">
-      <img src="w3images/steak.jpg" alt="Steak" style="width:100%">
+      <img src="steak.jpg" alt="Steak" style="width:100%">
 	  <h3>WWE 2K19</h3>
       <p>Let Me Tell You About Wrestling</p>
       <p>Sports Entertainment brought straight to your screen. </p>
@@ -47,7 +47,7 @@ class Homepage extends Component {
 	
 	
     <div class="w3-quarter">
-      <img src="w3images/cherries.png" alt="Cherries" style="width:100%">
+      <img src="cherries.png" alt="Cherries" style="width:100%">
 	  <h3>Uncharted: Lost Legacy</h3>
       <p>Adventures, uninterrupted</p>
       <p>Ever wished you were a treasure hunter? Wait no more, travel around the world with Chloe Frazer and friends.</p>
@@ -56,7 +56,7 @@ class Homepage extends Component {
 	
 	
     <div class="w3-quarter">
-      <img src="w3images/wine.jpg" alt="Pasta and Wine" style="width:100%">
+      <img src="wine.jpg" alt="Pasta and Wine" style="width:100%">
       <h3>WatchDogs</h3>
       <p>Once Again, Bring the System down from within as an unstoppable hacker.</p>
     </div>
@@ -65,28 +65,28 @@ class Homepage extends Component {
   <!-- Second Photo Grid-->
   <div class="w3-row-padding w3-padding-16 w3-center">
     <div class="w3-quarter">
-      <img src="w3images/popsicle.jpg" alt="Popsicle" style="width:100%">
+      <img src="popsicle.jpg" alt="Popsicle" style="width:100%">
       <h3>Assassin Creed: Unity</h3>
       <p>All I Need Is a Mission</p>
     </div>
 	
 	
     <div class="w3-quarter">
-      <img src="w3images/salmon.jpg" alt="Salmon" style="width:100%">
+      <img src="salmon.jpg" alt="Salmon" style="width:100%">
       <h3>Super Heroes 2</h3>
       <p>Avengers, Assemble.</p>
     </div>
 	
 	
     <div class="w3-quarter">
-      <img src="w3images/sandwich2.jpg" alt="Sandwich" style="width:100%">
+      <img src="sandwich2.jpg" alt="Sandwich" style="width:100%">
       <h3>Destiny</h3>
       <p>The Perfect Game, A Real Classic</p>
     </div>
 	
 	
     <div class="w3-quarter">
-      <img src="w3images/croissant.jpg" alt="Croissant" style="width:100%">
+      <img src="croissant.jpg" alt="Croissant" style="width:100%">
       <h3>Fifa 20</h3>
       <p>BREAK NEW GROUND</p>
     </div>
