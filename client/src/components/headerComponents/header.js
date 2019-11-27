@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import { Button, ButtonToolbar } from 'react-bootstrap';
 import Signup from './register/signup';
 import LoginButton from './register/loginbutton';
+import gateway from '../images/gateway.png';
 
 
 //Redux
@@ -44,7 +45,7 @@ class Header extends Component {
         <header>
 
           <div className='logo'>
-          LOGO
+          <img src = {gateway} alt="Gateway" style={{width: '10%'}} />
           </div>
 
           <nav>
