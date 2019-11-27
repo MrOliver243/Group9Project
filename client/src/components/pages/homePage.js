@@ -2,14 +2,14 @@
 
 import React, { Component } from 'react';
 //import './Assets/css/default.css';
-import steak from './imag/steak.jpg';
-import cherries from './imag/cherries.png';
-import croissant from './imag/croissant.jpg';
-import popsicle from './imag/popsicle.jpg';
-import salmon from './imag/salmon.jpg';
-import sandwich2 from './imag/sandwich2.jpg';
-import wine from './imag/wine.jpg';
-import sandwich from './imag/sandwich.jpg';
+import steak from '../imag/steak.jpg';
+import cherries from '../imag/cherries.png';
+import croissant from '../imag/croissant.jpg';
+import popsicle from '../imag/popsicle.jpg';
+import salmon from '../imag/salmon.jpg';
+import sandwich2 from '../imag/sandwich2.jpg';
+import wine from '../imag/wine.jpg';
+import sandwich from '../imag/sandwich.jpg';
 
 class Homepage extends Component {
   render() {
