@@ -1,4 +1,3 @@
-
 // required files
 const { admin, db } = require('../utilities/admin');
 const config = require('../utilities/config');
@@ -19,8 +18,6 @@ exports.signup = (request, response) => {
   const { valid, errors } = validateSignupData(newUser);
 
   if (!valid) return response.status(400).json(errors);
-
-  //const noImg = 'no-img.png';
 
   let token, userId;
   db.doc(`/users/${newUser.handle}`)
@@ -66,7 +63,6 @@ exports.signup = (request, response) => {
 
 // login for existing users
 
-
 exports.login = (request, response) => {
   const user = {
     email: request.body.email,
@@ -96,9 +92,6 @@ exports.login = (request, response) => {
     });
 };
 
-
-
-
 exports.getAuthenticatedUser = (req, res) => {
   let userData = {};
   db.doc(`/users/${req.user.handle}`)
@@ -118,53 +111,9 @@ exports.getAuthenticatedUser = (req, res) => {
         userData.likes.push(doc.data());
       })
       return res.json(userData);
-      /*
-      return db
-        .collection('notifications')
-        .where('recipient', '==', req.user.handle)
-        .orderBy('createdAt', 'desc')
-        .limit(10)
-        .get();
-    })
-    .then((data) => {
-      userData.notifications = [];
-      data.forEach((doc) => {
-        userData.notifications.push({
-          recipient: doc.data().recipient,
-          sender: doc.data().sender,
-          createdAt: doc.data().createdAt,
-          screamId: doc.data().screamId,
-          type: doc.data().type,
-          read: doc.data().read,
-          notificationId: doc.id
-        });
-      });
-      return res.json(userData);
-      */
     })
     .catch((err) => {
       console.error(err);
       return res.status(500).json({ error: err.code });
     });
 };
-
-// Get any user's details
-/*
-exports.getUserDetails = (req, res) => {
-  let userData = {};
-  db.doc(`/users/${req.params.handle}`)
-    .get()
-    .then((doc) => {
-      if (doc.exists) {
-        userData.user = doc.data();
-        return (res.json(userData));
-        } else {
-        return res.status(404).json({ error: 'User not found' });
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      return res.status(500).json({ error: err.code });
-    });
-};
-*/
