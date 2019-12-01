@@ -1,7 +1,4 @@
-const {admin , db} = require('../utilities/admin');
-const config = require('../utilities/config');
-const firebase = require('firebase');
-firebase.initializeApp(config);
+const { db} = require('../utilities/admin');
 
 //get all games
 exports.getAllGames = (req, res) => {
@@ -26,10 +23,11 @@ exports.getAllGames = (req, res) => {
     });
 };
 
+
 //get one game
 exports.getGame = (req, res) => {
     let gameData = {};
-    db.doc('/games/${req.params.gameId}')
+    db.doc(`/games/${req.params.gameId}`)
     .get()
     .then((doc) => {
         if (!doc.exists) {
@@ -37,17 +35,17 @@ exports.getGame = (req, res) => {
         }
         gameData = doc.data();
         gameData.gameId = doc.Id;
-        return db
+        /*return db
             .collection('games')
             .orderBy('rating','desc')
             .where('gameId', '==', req.params.gameId)
-            .get();
+            .get();*/
     })
     .then((data) => {
-        gameData.games = [];
+        /*gameData.games = [];
         data.forEach((doc) => {
             gameData.games.push(doc.data());
-        });
+        });*/
         return res.json(gameData);
     })
     .catch((err) => {
