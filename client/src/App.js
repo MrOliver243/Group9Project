@@ -6,6 +6,10 @@ import Header from './components/headerComponents/header';
 import Footer from './components/footerComponents/footer';
 import Homepage from './components/pages/homePage';
 import Games from './components/pages/games';
+import FAQ from './components/pages/FAQ';
+import About from './components/pages/about';
+
+
 
 //redux
 import { Provider } from 'react-redux';
@@ -25,6 +29,14 @@ function App() {
             <Route exact path='/' component={ Homepage } />
             <Route exact path='/Games' component={ Games } />
 
+            <Route exact path='/' component={ Homepage } />
+            <Route exact path='/FAQ' component={ FAQ } />
+
+            <Route exact path='/' component={ Homepage } />
+            <Route exact path='/About' component={ About } />
+
+
+
           </Switch>
         <Footer />
       </Router>
@@ -33,18 +45,3 @@ function App() {
 }
 
 export default App;
-
-/*
-
-  useful links to work off
-
-  https://www.youtube.com/watch?v=-A0TMwcXC9s&list=PLMhAeHCz8S38ryyeMiBPPUnFAiWnoPvWP&index=22
-
-  https://www.youtube.com/watch?v=Xa7ECigMWRs
-
-  https://www.youtube.com/watch?v=Y4NHqDp88lA
-
-  https://console.firebase.google.com/project/react-game-website/
-
-
-*/
