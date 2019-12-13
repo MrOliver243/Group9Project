@@ -46,17 +46,24 @@ class Header extends Component {
 
           <div className='logo'>
           <img src = {gateway} alt="Gateway" style={{width: '10%'}} />
+          <div  style={{color: '#81C91D'}}>The Gateway</div>
           </div>
 
+            <div className="serif">
+
           <nav>
-            <ul>
-              <li className="first">
+
+            <ul  >
+
+              <li className="first" >
                 <Link to="/">Home</Link>
               </li>
               <li>
                 <Link to="/Games">Games</Link>
               </li>
-
+              <li>
+                <Link to="/FAQ">FAQ</Link>
+              </li>
 
               { authenticated ? userLinks: guestLinks }
 
@@ -66,7 +73,7 @@ class Header extends Component {
                   <Button
                     variant = 'primary'
                     onClick={()=> this.setState({ addModalShowSignup: true})}>
-                    Signup
+                    Register
                   </Button>
 
                   <Signup
@@ -79,6 +86,8 @@ class Header extends Component {
 
             </ul>
           </nav>
+
+          </div>
 
         </header>
     );
