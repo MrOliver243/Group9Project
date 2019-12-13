@@ -1,24 +1,26 @@
-/*import {
-  SET_SCREAMS,
-  LIKE_SCREAM,
-  UNLIKE_SCREAM,
-  LOADING_DATA,
-  DELETE_SCREAM,
-  POST_SCREAM,
-  SET_SCREAM,
-  SUBMIT_COMMENT
+import {
+  SET_GAMES,
+  SET_GAME,
 } from '../types';
 
 const initialState = {
-  screams: [],
-  scream: {},
+  games: [],
+  game: {}
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
-
+    case SET_GAMES:
+      return {
+        ...state,
+        games: action.payload
+      };
+      case SET_GAME:
+        return {
+          ...state,
+          game: action.payload
+        };
     default:
       return state;
   }
 }
-*/
