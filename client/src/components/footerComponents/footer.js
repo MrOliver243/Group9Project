@@ -8,19 +8,27 @@ class Footer extends Component {
   render() {
     return (
 
-      <footer>
+      <footer className="sansserif">
 
-        <li className="center">
-          <Link to  ="/About">About</Link>
-        </li>
+
 
 
         <div class="row" >
-        <div class="col"  >Contact us: thegateway@email.ie
-        <p>Lead Admin: 086192999</p>
+        <div class="col"  >Contact us: <p>thegateway@email.ie</p>
+                                       <p> (045) 444 555</p>
+                                       <p>27 Anfield Rd, Liverpool L4 0TF, United Kingdom</p>
         </div>
-        <div class="col" >Placeholder</div>
-        <div class="col" >Placeholder</div>
+        <div class="col" >Best Games: <p> Minecraft</p>
+                                      <p> Tetris</p>
+                                      <p> Whack-A-Mole</p>
+
+        </div>
+        <div class="col" >
+          <li className="center" >
+              <Link to  ="/About" style={{color: '#ffffff'}}>About</Link>
+          </li>
+        </div>
+        <div class="col" class="pl-1">Placeholder</div>
         <div class="col" >Placeholder</div>
 
         </div>
