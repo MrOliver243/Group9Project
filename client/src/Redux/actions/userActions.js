@@ -1,4 +1,4 @@
-import { SET_USER,SET_ERRORS, CLEAR_ERRORS, SET_UNAUTHENTICATED } from '../types';
+import { SET_USER, SET_ERRORS, CLEAR_ERRORS, SET_UNAUTHENTICATED } from '../types';
 import axios from 'axios';
 
 
@@ -20,13 +20,24 @@ export const loginUser = (userData, history) => (dispatch) => {
 };
 
 
-
 export const logoutUser = () => (dispatch) => {
   localStorage.removeItem('FBIdToken');
   delete axios.defaults.headers.common['Authorization'];
   dispatch({ type: SET_UNAUTHENTICATED });
 };
 
+
+export const getUserData = () => (dispatch) => {
+  axios
+    .get('https://europe-west1-react-game-website.cloudfunctions.net/api/user')
+    .then((result) => {
+      dispatch({
+        type: SET_USER,
+        payload: result.data
+      });
+    })
+    .catch((error) => console.log(error));
+};
 
 export const signupUser = (newUserData, history) => (dispatch) => {
   axios
