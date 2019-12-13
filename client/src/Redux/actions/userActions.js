@@ -27,17 +27,6 @@ export const logoutUser = () => (dispatch) => {
   dispatch({ type: SET_UNAUTHENTICATED });
 };
 
-export const getUserData = () => (dispatch) => {
-  axios
-    .get('https://europe-west1-react-game-website.cloudfunctions.net/api/user')
-    .then((res) => {
-      dispatch({
-        type: SET_USER,
-        payload: res.data
-      });
-    })
-    .catch((err) => console.log(err));
-};
 
 export const signupUser = (newUserData, history) => (dispatch) => {
   axios
