@@ -4,18 +4,34 @@ import {
 } from '../types';
 import axios from 'axios';
 
-export const getUserData = (userHandle) => (dispatch) => {
-  axios
-    .get(`https://europe-west1-react-game-website.cloudfunctions.net/api/user/${userHandle}`)
-    .then((res) => {
+export const getAllGames = () => (dispatch) => {
+  axios.get('https://europe-west1-react-game-website.cloudfunctions.net/api/getAllGames')
+    .then((result) => {
       dispatch({
-        type: SET_SCREAMS,
-        payload: res.data
+        payload: result.data
       });
     })
-    .catch(() => {
+    .catch((error) => {
       dispatch({
-        type: SET_SCREAMS,
+        payload: null
+      });
+    });
+};
+
+export const clearErrors = () => (dispatch) => {
+  dispatch({ type: CLEAR_ERRORS });
+};
+
+export const getGame = (gameId) => (dispatch) => {
+  axios
+    .get(`https://europe-west1-react-game-website.cloudfunctions.net/api/getGame/${gameId}`)
+    .then((result) => {
+      dispatch({
+        payload: result.data
+      });
+    })
+    .catch((error) => {
+      dispatch({
         payload: null
       });
     });
