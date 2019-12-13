@@ -99,7 +99,6 @@ class Homepage extends Component {
    
    
   </div>
-  //<div id="like_button_container" />
 </div>
 
 
