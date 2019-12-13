@@ -1,10 +1,6 @@
-import {
-  SET_ERRORS,
-  CLEAR_ERRORS
-} from '../types';
+import { SET_ERRORS, CLEAR_ERRORS } from '../types';
 
 const initialState = {
-  loading: false,
   errors: null
 };
 
