@@ -2,10 +2,13 @@
 
 import React from 'react';
 import './AutoCompleteText.css';
-export default class AutoCompleteText extends React.Component {
-    constructor (props) {
-        super(props);
-        this.items = [
+export default class AutoCompleteText extends React.Component { 
+    /*this constructor creates an array of names that will be displayed under our search bar.
+    
+    */
+    constructor (props) { 
+        super(props); 
+        this.items = [ 
             'Dark Souls',
             'Minecraft',
             'Fortnite',
@@ -26,8 +29,8 @@ export default class AutoCompleteText extends React.Component {
         let suggestions = [];
         if (value.length > 0) {
             
-            const regex = new RegExp('^${value}', 'i');
-            const suggestions = this.items.sort().filter(v => regex.test(v));
+            const regex = new RegExp(`^${value}`, 'i');
+            suggestions = this.items.sort().filter(v => regex.test(v));
         }
         this.setState(() => ({ suggestions, text: value }));
     }
@@ -50,15 +53,18 @@ export default class AutoCompleteText extends React.Component {
             </ul>
         )
     }
-
+    //render function for searchbar
     render () {
         const { text } = this.state;
         return (
             <div className="AutoCompleteText">
-                <input value={ text } onChange={this.onTextChanged} type="text" />
+                <input value={ text } onChange={this.onTextChanged} placeholder ="Search Games.." type="text" />
                 {this.renderSuggestions()}
             </div>
             
         )
     }
 }
+
+//https://www.youtube.com/watch?v=NnpISZANByg
+//!!Code taken from this video
