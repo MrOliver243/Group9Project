@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import AutoCompleteText from '../AutoCompleteText.js';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getAllGames } from '../../Redux/actions/dataActions';
 
-class Homepage extends Component {
+class Homepage extends Component {  
   componentDidMount() {
     this.props.getAllGames();
   }
@@ -11,8 +12,9 @@ class Homepage extends Component {
     const { games } = this.props.data;
     console.log(games);
     return (
+      
       <div className='container-fluid'>
-
+        <AutoCompleteText/>
         <h1>Games Genre Categories Page</h1>
           
       </div>

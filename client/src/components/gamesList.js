@@ -1,0 +1,1 @@
+//input array list of games here for easier export
