@@ -16,15 +16,10 @@ export const getUserData = (userHandle) => (dispatch) => {
     });
 };
 
-export const clearErrors = () => (dispatch) => {
-  dispatch({ type: CLEAR_ERRORS });
-};
 
 // this function gets all games from the database
-
 export const getAllGames = () => (dispatch) => {
-  axios.get('https://europe-west1-react-game-website.cloudfunctions.net/api/getAllGames')
-    .then((result) => {
+  axios.get('https://europe-west1-react-game-website.cloudfunctions.net/api/getAllGames').then((result) => {
       dispatch({
         type: SET_GAMES,
         payload: result.data
@@ -33,23 +28,15 @@ export const getAllGames = () => (dispatch) => {
     .catch((error) => {
       dispatch({
         type: SET_GAMES,
-        payload: null
+        payload: []
       });
     });
-};
-
-// not sure if this function is needed
-
-export const clearErrors = () => (dispatch) => {
-  dispatch({ type: CLEAR_ERRORS });
 };
 
 // this function gets one game from the database
 
 export const getGame = (gameId) => (dispatch) => {
-  axios
-    .get(`https://europe-west1-react-game-website.cloudfunctions.net/api/getGame/${gameId}`)
-    .then((result) => {
+  axios.get(`https://europe-west1-react-game-website.cloudfunctions.net/api/getGame/${gameId}`).then((result) => {
       dispatch({
         type: SET_GAME,
         payload: result.data
@@ -65,4 +52,20 @@ export const getGame = (gameId) => (dispatch) => {
 
 export const clearErrors = () => (dispatch) => {
   dispatch({ type: CLEAR_ERRORS });
+};
+
+
+export const getAllGamesPerGenre = (genre) => (dispatch) => {
+  axios.get(`https://europe-west1-react-game-website.cloudfunctions.net/api/getAllGamesPerGenre/${genre}`).then((result) => {
+      dispatch({
+        type: SET_GAME,
+        payload: result.data
+      });
+    })
+    .catch((error) => {
+      dispatch({
+        type: SET_GAME,
+        payload: null
+      });
+    });
 };
