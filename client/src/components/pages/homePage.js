@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AutoCompleteText from '../AutoCompleteText.js';
+import gamesList from '../gamesList.js';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getAllGames } from '../../Redux/actions/dataActions';
@@ -14,7 +15,7 @@ class Homepage extends Component {
     return (
       
       <div className='container-fluid'>
-        <AutoCompleteText/>
+        <AutoCompleteText items={gamesList}/>
         <h1>Games Genre Categories Page</h1>
           
       </div>
