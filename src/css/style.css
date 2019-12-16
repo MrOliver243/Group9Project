@@ -1,21 +1,5 @@
-/*
-    icons currently from google
-    image used in user-projects : 
-    https://www.pexels.com/photo/woman-using-computer-3184163/
-    logo icon used :
-
-    https://www.flaticon.com/free-icon/heart-shaped-wolf-face_32845?term=wolf&page=1&position=28
-
-
-    white-theme : 
-    text_nav_or_critical - 333333
-    text - f8f8f8
-    background - dfdfdf
-    borders - 555555
-    nav-background eeeeee
-*/
 body {
-  background: #2c3e50;
+  background: #ecf0f1;
   color: black;
 }
 
@@ -33,13 +17,13 @@ body {
   color: red;
 }
 .user-projects {
-  background: #535c68;
+  background: #718093;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.4);
   color: black;
   margin-top: 40px;
   margin-bottom: 0px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding: 40px 40px;
+  width: 1000px;
 }
 
 .like-btn,

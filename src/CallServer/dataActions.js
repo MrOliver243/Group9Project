@@ -1,73 +1,67 @@
-import { SET_ERRORS, CLEAR_ERRORS, SET_GAMES, SET_GAME, SET_SCREAM, SUBMIT_COMMENT, POST_SCREAM} from '../types';
-import axios from 'axios';
+import {
+  SET_ERRORS,
+  CLEAR_ERRORS,
+  SET_GAMES,
+  SET_GAME,
+  SET_REVIEWS,
+  SUBMIT_COMMENT,
+  POST_SCREAM
+} from "./types";
+import axios from "axios";
+import * as firebase from "firebase/app";
+import "firebase/firestore";
 
-/*
-export const getUserData = (userHandle) => (dispatch) => {
-  axios
-    .get(`https://europe-west1-react-game-website.cloudfunctions.net/api/user/${userHandle}`)
-    .then((res) => {
-      dispatch({
-        //type: SET_SCREAMS,
-        payload: res.data
-      });
+// Initialize Cloud Firestore through Firebase
+firebase.initializeApp({
+  apiKey: "AIzaSyCvLjPLMrWCj2S-_ePYo3mgIpBlWBHiC-U",
+  authDomain: "react-game-website.firebaseapp.com",
+  projectId: "react-game-website"
+});
+
+let db = firebase.firestore();
+
+export async function getAllGames() {
+  const url =
+    "https://europe-west1-react-game-website.cloudfunctions.net/api/getAllGames";
+  let allGames = null;
+  const pullAll = fetch(url)
+    .then(resp => resp.json())
+    .then(function(data) {
+      allGames = data;
     })
-    .catch(() => {
-      dispatch({
-       // type: SET_SCREAMS,
-        payload: null
-      });
+    .catch(function(error) {
+      console.log(error);
     });
-};
-*/
+  await pullAll;
+  return allGames;
+}
 
-
-
-export async function getAllGames(){
-   const url = 'https://europe-west1-react-game-website.cloudfunctions.net/api/getAllGames'; 
-   let allGames = null;
-   const pullAll = fetch(url)
-  .then((resp) => resp.json())
-  .then(function(data) {
-       allGames = data;	
-   }).catch(function(error) {
-	  console.log(error);
-   });
-   await pullAll;
-   return allGames;
-};
-
-
-
-
-export const getScreams = (gameId) => (dispatch) => {
-  axios
-    .get(`/scream`)
-    .then((result) => {
-      dispatch({
-        type: SET_SCREAM,
-        payload: result.data
+export async function getReviews(gameTitle) {
+  const fetch = await db
+    .collection("reviews")
+    .get()
+    .then(function(handleData) {
+      let ar = [];
+      handleData.forEach(function(doc) {
+        if(doc.data().gameTitle === gameTitle) {
+           ar.push(doc.data());
+        }
       });
-    })
-    .catch((error) => {
-      dispatch({
-        type: SET_SCREAM,
-        payload: null
-      });
+      return ar;
     });
-};
+  return fetch;
+}
 
-
-
-export const getGame = (gameId) => (dispatch) => {
+export const getGame = gameId => dispatch => {
   axios
     .get(`games/${gameId}`)
-    .then((result) => {
+    .then(result => {
       dispatch({
         type: SET_GAME,
         payload: result.data
       });
     })
-    .catch((error) => {
+    .catch(error => {
       dispatch({
         type: SET_GAME,
         payload: null
@@ -75,18 +69,18 @@ export const getGame = (gameId) => (dispatch) => {
     });
 };
 
-export const postReview = (newScream) => (dispatch) => {
- // dispatch({ type: LOADING_UI });
+export const postReview = newScream => dispatch => {
+  // dispatch({ type: LOADING_UI });
   axios
-    .post('/scream', newScream)
-    .then((res) => {
+    .post("/scream", newScream)
+    .then(res => {
       dispatch({
         type: POST_SCREAM,
         payload: res.data
       });
       dispatch(clearErrors());
     })
-    .catch((err) => {
+    .catch(err => {
       dispatch({
         type: SET_ERRORS,
         payload: err.response.data
@@ -94,17 +88,17 @@ export const postReview = (newScream) => (dispatch) => {
     });
 };
 
-export const submitComment = (screamId, commentData) => (dispatch) => {
+export const submitComment = (screamId, commentData) => dispatch => {
   axios
     .post(`/scream/${screamId}/comment`, commentData)
-    .then((res) => {
+    .then(res => {
       dispatch({
         type: SUBMIT_COMMENT,
         payload: res.data
       });
       dispatch(clearErrors());
     })
-    .catch((err) => {
+    .catch(err => {
       dispatch({
         type: SET_ERRORS,
         payload: err.response.data
@@ -112,7 +106,6 @@ export const submitComment = (screamId, commentData) => (dispatch) => {
     });
 };
 
-
-export const clearErrors = () => (dispatch) => {
+export const clearErrors = () => dispatch => {
   dispatch({ type: CLEAR_ERRORS });
 };

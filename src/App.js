@@ -1,55 +1,54 @@
-import "./Assets/css/style.css";
-import React from 'react';
+import "./css/style.css";
+import React from "react";
 import { Component } from "react";
-import MainPage from './components/pages/MainPage';
-import SinglePage from './components/pages/SinglePage';
-import LoadingScreen from "./components/pages/LoadingScreen";
-import {getAllGames} from "./Redux/actions/dataActions";
+import MainPage from "./Pages/MainPage";
+import LoadingScreen from "./Pages/LoadingScreen";
+import { getAllGames } from "./CallServer/dataActions";
+import SinglePage from "./Pages/SinglePage";
 
 class App extends Component {
   constructor(props) {
     super(props);
+    //A dummy component to be shown before api is pulled
+    const dummyComponent = (
+      <MainPage
+        projectBase={[
+          {
+            title: "Example dummy",
+            description: "Example",
+            ratings: "Example",
+            image: "example"
+          }
+        ]}
+        pClick={this.pClick}
+      />
+    );
+
     this.bClick = this.bClick.bind(this);
     this.state = {
-	  projects: null,
+      firstRun: false,
       load: false,
-      prevPage: <MainPage/>,
-      displayScreen: (
-		<MainPage/>
-      )
+      prevPage: null,
+      displayScreen: dummyComponent
     };
   }
-  
-  async pullGames() {
-	await setTimeout(() => {
-		console.log("hello:",getAllGames());
-		this.setState({projects:getAllGames()});
-		this.setState({displayScreen: 
-		<MainPage
-          pClick={this.pClick}
-          passThis={this}
-		  projectBase = {this.state.projects}
-        />
-	});
-	},1000);
+
+  async initData() {
+    const fetchGames = await getAllGames();
+    return fetchGames;
   }
-  
-  gClick(){
-	this.callLoad();
-    this.setState({ displayScreen: <Games /> });
-  }
-  
-  pClick(gameTitle) {
+  pClick(game) {
     this.callLoad();
-    const gameProjects = Games.filter(function(o) {
-      return o.name === gameTitle;
-    });
+    console.log(game);
+    const setAr = []
+    setAr.push(game);
+    console.log(setAr);
     this.setState({
-      displayScreen: <SinglePage uName={gameTitle} projectBase={gameProjects} />
+      displayScreen: <SinglePage projectBase={setAr} pClick={null} />
     });
   }
-  
-   bClick() {
+
+  bClick() {
     this.callLoad();
     this.setState({ displayScreen: this.state.prevPage });
   }
@@ -58,23 +57,37 @@ class App extends Component {
     this.setState({ load: false });
     this.componentDidMount();
   }
-   componentDidMount() {
-	this.pullGames();
+  componentDidMount() {
     setTimeout(() => {
       this.setState({ load: true });
     }, 1000);
   }
+  async loadFirstData() {
+    if (!this.state.firstRun) {
+      const allGames = await this.initData();
+      this.setState({ firstRun: true });
+      this.setState({
+        displayScreen: (
+          <MainPage
+            projectBase={allGames}
+            pClick={this.pClick}
+            passThis={this}
+          />
+        )
+      });
+    }
+  }
   switchPages() {
+    this.loadFirstData(); // Initialize all data to be injected..
     if (!this.state.load) {
       return <LoadingScreen />;
     }
     return this.state.displayScreen;
   }
-  
+
   render() {
-	console.log(this.state.projects);
     const backButton =
-      this.state.displayScreen.type.name !== "MainPage" ? (
+      this.state.prevPage !== null ? (
         <div className="container fixed-bottom">
           <a className="hover" onClick={this.bClick}>
             <i className="material-icons fixed-bottom back-btn">
@@ -86,16 +99,12 @@ class App extends Component {
         ""
       );
     return (
-        <div className="App">
-			{backButton}
-			{this.switchPages()}
-        </div>
+      <div className="App">
+        {backButton}
+        {this.switchPages()}
+      </div>
     );
   }
-  
-  
-  
-
 }
 
 export default App;
