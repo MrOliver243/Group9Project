@@ -1,0 +1,91 @@
+/*
+    icons currently from google
+    image used in user-projects : 
+    https://www.pexels.com/photo/woman-using-computer-3184163/
+    logo icon used :
+
+    https://www.flaticon.com/free-icon/heart-shaped-wolf-face_32845?term=wolf&page=1&position=28
+
+
+    white-theme : 
+    text_nav_or_critical - 333333
+    text - f8f8f8
+    background - dfdfdf
+    borders - 555555
+    nav-background eeeeee
+*/
+body {
+  background: #2c3e50;
+  color: black;
+}
+
+.nav-bar {
+  color: #333333;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+}
+
+.nav-bar {
+  background: #ecf0f1;
+}
+
+.back-btn {
+  font-size: 40px;
+  color: red;
+}
+.user-projects {
+  background: #535c68;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.4);
+  color: black;
+  margin-top: 40px;
+  margin-bottom: 0px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.like-btn,
+.dislike-btn {
+  color: black;
+  background: transparent;
+  border: 1px solid transparent;
+}
+
+.like-btn:hover,
+.dislike-btn:hover,
+.like-btn:focus,
+.dislike-btn:focus {
+  cursor: pointer;
+  outline: 0;
+}
+
+.like-btn:hover {
+  color: #0be881;
+  border: 1px solid transparent;
+  background: transparent;
+  outline: 0;
+}
+
+.dislike-btn:hover {
+  color: red;
+  border: 1px solid transparent;
+  background: transparent;
+  outline: 0;
+}
+
+.icon-size {
+  transition: color 1s;
+  color: black;
+  font-size: 40px;
+}
+
+.icon-size:hover {
+  transition: color 1s;
+  color: red;
+}
+
+.hover {
+  cursor: pointer;
+}
+
+.load-screen {
+  height: 100vh;
+}
