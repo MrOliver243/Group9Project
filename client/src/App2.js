@@ -45,3 +45,18 @@ function App() {
 }
 
 export default App;
+
+/*
+
+  useful links to work off
+
+  https://www.youtube.com/watch?v=-A0TMwcXC9s&list=PLMhAeHCz8S38ryyeMiBPPUnFAiWnoPvWP&index=22
+
+  https://www.youtube.com/watch?v=Xa7ECigMWRs
+
+  https://www.youtube.com/watch?v=Y4NHqDp88lA
+
+  https://console.firebase.google.com/project/react-game-website/
+
+
+*/
